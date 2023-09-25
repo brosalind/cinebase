@@ -87,7 +87,10 @@ class Controller {
                 imgUrl: req.body.imgUrl,
                 rating: req.body.rating,
                 genreId: req.body.genreId,
-                authorId: req.user.id
+                authorId: req.user.id,
+                director: req.body.director,
+                writer: req.body.writer,
+                year: req.body.year
             }, { transaction: t })
 
             const casts = req.body.cast.map((el) => ({ ...el, movieId: movie.id }))
@@ -148,7 +151,10 @@ class Controller {
                     imgUrl: req.body.imgUrl,
                     rating: req.body.rating,
                     genreId: req.body.genreId,
-                    authorId: req.user.id
+                    authorId: req.user.id,
+                    director: req.body.director,
+                    writer: req.body.writer,
+                    year: req.body.year
                 }, {
                     where: {
                         id: req.params.id

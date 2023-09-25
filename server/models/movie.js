@@ -72,7 +72,10 @@ module.exports = (sequelize, DataTypes) => {
         }
     },
     genreId: DataTypes.INTEGER,
-    authorId: DataTypes.INTEGER
+    authorId: DataTypes.INTEGER,
+    director: DataTypes.STRING, 
+    writer: DataTypes.STRING,
+    year: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Movie',
