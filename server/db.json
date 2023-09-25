@@ -1,0 +1,174 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin1",
+      "email": "admin1@mail.com",
+      "password": "admin123",
+      "role": "admin",
+      "phoneNumber": "0816384",
+      "address": "hacktiv 78"
+    },
+    {
+      "id": 2,
+      "username": "admin2",
+      "email": "admin2@mail.com",
+      "password": "admin123",
+      "role": "admin",
+      "phoneNumber": "0816384",
+      "address": "hacktiv 78"
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "Everything Everywhere All At Once",
+      "slug": "Everything-Everywhere-All-At-Once",
+      "synopsis": "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes and connecting with the lives she could have led.",
+      "trailerUrl": "https://www.youtube.com/watch?v=wxN1T1uxQ2g",
+      "imgUrl": "https://m.media-amazon.com/images/M/MV5BYTdiOTIyZTQtNmQ1OS00NjZlLWIyMTgtYzk5Y2M3ZDVmMDk1XkEyXkFqcGdeQXVyMTAzMDg4NzU0._V1_FMjpg_UX1000_.jpg",
+      "rating": 5,
+      "genreId": 1,
+      "authorId": 1
+    },
+    {
+      "id": 2,
+      "title": "Decision To Leave",
+      "slug": "Decision-To-Leave",
+      "synopsis": "From a mountain peak in South Korea, a man plummets to his death. Did he jump, or was he pushed? When detective Hae-joon arrives on the scene, he begins to suspect the dead man's wife Seo-rae. But as he digs deeper into the investigation, he finds himself trapped in a web of deception and desire.",
+      "trailerUrl": "https://www.youtube.com/watch?v=Bmoy73lhs-s",
+      "imgUrl": "https://m.media-amazon.com/images/M/MV5BNzI3NzBlMzEtMTdmYi00N2M3LTlkYzEtZjU3NGI3NmMyNzhlXkEyXkFqcGdeQXVyMjY3NDMzMzU@._V1_FMjpg_UX1000_.jpg",
+      "rating": 5,
+      "genreId": 3,
+      "authorId": 2
+    },
+    {
+      "id": 3,
+      "title": "Howl's Moving Castle",
+      "slug": "Howls-Moving-Castle",
+      "synopsis": "When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.",
+      "trailerUrl": "https://www.youtube.com/watch?v=iwROgK94zcM",
+      "imgUrl": "https://image.tmdb.org/t/p/original/1QRmDIYOMzdcTBaf0Pn09fCi83x.jpg",
+      "rating": 5,
+      "genreId": 2,
+      "authorId": 1
+    },
+    {
+      "id": 4,
+      "title": "Portrait of a Lady on Fire",
+      "slug": "Portrat-of-a-Lady-on-Fire",
+      "synopsis": "In 18th-century France young painter Marianne, is commissioned to do the wedding portrait of Héloïse without her knowing. Therefore, Marianne must observe her model by day to paint her portrait at night. Day by day, the two women become closer as they share Héloïse's last moments of freedom before the impending wedding.",
+      "trailerUrl": "https://www.youtube.com/watch?v=R-fQPTwma9o",
+      "imgUrl": "https://image.tmdb.org/t/p/original/ynpTqqalUbnlToySBIq6NSWqRwA.jpg",
+      "rating": 5,
+      "genreId": 1,
+      "authorId": 2
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Drama"
+    },
+    {
+      "id": 2,
+      "name": "Animation"
+    },
+    {
+      "id": 3,
+      "name": "Thriller"
+    },
+    {
+      "name": "Action",
+      "id": 4
+    },
+    {
+      "name": "Comedy",
+      "id": 5
+    },
+    {
+      "name": "okay",
+      "id": 6
+    },
+    {
+      "name": "okay",
+      "id": 7
+    },
+    {
+      "name": "okay",
+      "id": 8
+    },
+    {
+      "name": "okay",
+      "id": 9
+    }
+  ],
+  "casts": [
+    {
+      "id": 1,
+      "movieId": 3,
+      "name": "Takuya Kimura",
+      "profilePict": "https://ilarge.lisimg.com/image/1607464/740full-takuya-kimura.jpg"
+    },
+    {
+      "id": 2,
+      "movieId": 3,
+      "name": "Chieko Baisho",
+      "profilePict": "https://images.mubicdn.net/images/cast_member/10322/cache-199842-1538060809/image-w856.jpg?size=800x"
+    },
+    {
+      "id": 3,
+      "movieId": 3,
+      "name": "Tatsuya Gashûin",
+      "profilePict": "https://m.media-amazon.com/images/M/MV5BNzkwYTU0MTYtYTVhMC00NGQ3LWJkZmUtOWFlYzhmMDI3MzdmXkEyXkFqcGdeQXVyMjg0MTI5NzQ@._V1_UY1200_CR94,0,630,1200_AL_.jpg"
+    },
+    {
+      "id": 4,
+      "movieId": 2,
+      "name": "Tang Wei",
+      "profilePict": "https://images.moviefit.me/p/o/45761-tang-wei.jpg"
+    },
+    {
+      "id": 5,
+      "movieId": 2,
+      "name": "Park Hae-il",
+      "profilePict": "https://w.notrecinema.com/images/usercontent/star/park-hae-il-photo_155358_37082.jpg"
+    },
+    {
+      "id": 6,
+      "movieId": 1,
+      "name": "Michelle Yeoh",
+      "profilePict": "https://image.tmdb.org/t/p/original/gPtGtHPfImNhXJSOIjl9g6W7N6X.jpg"
+    },
+    {
+      "id": 7,
+      "movieId": 1,
+      "name": "Stephanie Hsu",
+      "profilePict": "https://ilarge.lisimg.com/image/17517220/740full-stephanie-hsu.jpg"
+    },
+    {
+      "id": 8,
+      "movieId": 1,
+      "name": "Jamie Lee Curtis",
+      "profilePict": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/9KWvPVeiLOXlOGl0XVyHZtJWQtx.jpg"
+    },
+    {
+      "id": 9,
+      "movieId": 1,
+      "name": "Ke Huy Quan",
+      "profilePict": "https://m.media-amazon.com/images/M/MV5BYTQ5NjJiNjAtMjIxNy00Y2YxLWJmNmMtYjcwNGM0ZjljYmM5XkEyXkFqcGdeQXVyMTM5NDUxMTA@._V1_UY1200_CR134,0,630,1200_AL_.jpg"
+    },
+    {
+      "id": 10,
+      "movieId": 4,
+      "name": "Adèle Haenel",
+      "profilePict": "https://upload.wikimedia.org/wikipedia/commons/7/78/Ad%C3%A8le_Haenel_Cannes_2017.jpg"
+    },
+    {
+      "id": 11,
+      "movieId": 4,
+      "name": "Noémie Merlant",
+      "profilePict": "https://upload.wikimedia.org/wikipedia/commons/1/1f/No%C3%A9mie_Merlant_2017_2.jpg"
+    }
+  ]
+}
