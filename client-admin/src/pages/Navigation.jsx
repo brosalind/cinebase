@@ -7,10 +7,10 @@ function Navigation(){
         <>
           <Container>
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-2" style={{marginLeft: '-40px'}}>
                 <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-9">
                 <Outlet></Outlet>
                 </div>
             </div>

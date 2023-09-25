@@ -21,11 +21,13 @@ function Movie() {
         imgUrl: '',
         synopsis: '',
         trailerUrl: '',
+        writer: '',
+        director: '',
+        year: 0,
         rating: 0,
         genreId: 1,
         authorId: 1,
         casts: []
-
     })
     
     useEffect(() => {
@@ -112,6 +114,18 @@ function Movie() {
                         <Form.Group className="mb-3">
                             <Form.Label>Movie Trailer</Form.Label>
                             <Form.Control type="text" placeholder="Enter a new movie trailer..." name="trailerUrl" value={movieForm.trailerUrl} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Writer</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie writer..." name="writer" value={movieForm.writer} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Director</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie director..." name="director" value={movieForm.director} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Year</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie year..." name="year" value={movieForm.year} onChange={handleChange} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Movie Rating</Form.Label>

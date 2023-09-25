@@ -20,15 +20,16 @@ function MovieTableRow({movies}) {
                     <td>{mv.title}</td>
                     <td><img src={mv.imgUrl} className='img-fluid' /></td>
                     <td>{mv.synopsis}</td>
-                    <td><iframe src={mv.trailerUrl}></iframe></td>
+                    <td><iframe src={mv.trailerUrl} style={{maxWidth: '150px'}}></iframe></td>
+                    <td>{mv.writer}</td>
+                    <td>{mv.director}</td>
+                    <td>{mv.year}</td>
                     <td>{mv.rating}</td>
                     <td>{mv.Genre.name}</td>
-                    <td>user for now</td>
-                    {/* <td>{mv.User.username}</td> */}
+                    <td>{mv.User.username}</td>
                     <td>
                         <CastList cast={mv.Casts}></CastList>
                     </td>
-                   {/* <Button onClick={() => {dispatch(thunkGetMovieDetails(mv.id))}}>Edit</Button> */}
                     <td><Button onClick={() => handleEdit(mv.id)}>Edit</Button>
                     
                     <Button onClick={() => {dispatch(thunkDeleteMovie(mv.id))}}>Delete</Button></td>

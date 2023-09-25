@@ -94,7 +94,10 @@ export function thunkAddMovie(movieForm) {
                     synopsis: movieForm.synopsis,
                     rating: movieForm.rating,
                     genreId: movieForm.genreId,
-                    cast: movieForm.casts
+                    cast: movieForm.casts,
+                    year: movieForm.year,
+                    writer: movieForm.writer,
+                    director: movieForm.director
                 })
         })
             .then(async (response) => {

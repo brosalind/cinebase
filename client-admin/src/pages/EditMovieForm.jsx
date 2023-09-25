@@ -40,7 +40,10 @@ function editMovieForm() {
                 rating: selectedMovie.rating || 0,
                 genreId: selectedMovie.genreId || 0,
                 authorId: selectedMovie.authorId || 0,
-                casts: selectedMovie.Casts || []
+                casts: selectedMovie.Casts || [],
+                year: selectedMovie.year || 0,
+                director: selectedMovie.director || '',
+                writer: selectedMovie.writer || ''
             })
             setEditMovieFormLoading(false)
         }
@@ -75,9 +78,9 @@ function editMovieForm() {
         console.log("submit", editMovieForm)
         dispatch((thunkEditMovie(id, editMovieForm)))
         navigate('/admin/movies')
-       
+
     }
-    
+
     function addNewInput() {
         setEditMovieForm({
             ...editMovieForm,
@@ -91,8 +94,8 @@ function editMovieForm() {
         })
     }
 
-    function handleClose(){
-            navigate(`/admin/movies`)
+    function handleClose() {
+        navigate(`/admin/movies`)
     }
     if (fetchGenresLoading || !genres.length || selectedMovieLoading || editMovieFormLoading) {
         return <h1 className="text-center">Loading... Please wait.</h1>
@@ -119,6 +122,18 @@ function editMovieForm() {
                 <Form.Group className="mb-3">
                     <Form.Label>Movie Trailer</Form.Label>
                     <Form.Control type="text" placeholder="Enter a new movie trailer..." name="trailerUrl" value={editMovieForm.trailerUrl} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Writer</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a new movie writer..." name="writer" value={editMovieForm.writer} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Director</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a new movie director..." name="director" value={editMovieForm.director} onChange={handleChange} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Year</Form.Label>
+                    <Form.Control type="text" placeholder="Enter a new movie year..." name="year" value={editMovieForm.year} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Movie Rating</Form.Label>

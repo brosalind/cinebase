@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { thunkFetchMovies } from "../stores/movieActionCreator";
 import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import '../assets/movie.css'
 
 
 
@@ -26,7 +27,7 @@ function MovieTable() {
 return (
     <>
     <Container>
-    <Table>
+    <Table className="table-responsive custom-table">
         <thead>
             <tr>
                 <th>#</th>
@@ -34,6 +35,9 @@ return (
                 <th>Poster</th>
                 <th>Synopsis</th>
                 <th>Trailer</th>
+                <th>Writer</th>
+                <th>Director</th>
+                <th>Year</th>
                 <th>Rating</th>
                 <th>Genre</th>
                 <th>Owner</th>
