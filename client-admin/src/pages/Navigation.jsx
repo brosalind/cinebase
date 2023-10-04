@@ -1,21 +1,24 @@
 import Sidebar from '../components/Sidebar'
 import Container from 'react-bootstrap/Container'
 import { Outlet } from 'react-router-dom'
+import { Row } from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
+import '../assets/movie.css'
 
 function Navigation(){
     return(
         <>
-          <Container>
-            <div className="row">
-                <div className="col-md-2" style={{marginLeft: '-40px'}}>
+          <Row style={{'--bs-gutter-x': '0'}}>
+            <Col className="col-md-2 bg-light">
+            <div className="fixed-sidebar">
                 <Sidebar></Sidebar>
                 </div>
-                <div className="col-md-9">
+                </Col>
+                <Col className="col-md-10">
                 <Outlet></Outlet>
-                </div>
-            </div>
-          
-        </Container>
+                </Col>
+            </Row>
+        
 
       
         </>

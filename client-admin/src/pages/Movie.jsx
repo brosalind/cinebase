@@ -78,7 +78,13 @@ function Movie() {
     }
 
     if(fetchGenresLoading || !genres.length){
-        return <h1 className="text-center">Loading... Please wait.</h1>
+        return <>
+         <Container className="pt-5">
+            <Col>
+        <h1 className="text-center">Loading... Please wait.</h1>
+        </Col>
+        </Container>
+        </>
     }
     
 
@@ -88,7 +94,7 @@ function Movie() {
             <Col>
 
     
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="dark" onClick={handleShow}>
                 Add a New Movie
             </Button>
             <Modal show={show} onHide={handleClose}>
@@ -165,13 +171,13 @@ function Movie() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={addNewInput}>
+                    <Button variant="dark" onClick={addNewInput}>
                         Add Cast Member
                     </Button>
-                    <Button variant="secondary" onClick={handleSubmit}>
+                    <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
                         Submit
                     </Button>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>

@@ -171,13 +171,13 @@ function editMovieForm() {
                     }
                     )}
 
-                <Button variant="primary" onClick={addNewInput}>
+                <Button variant="dark" onClick={addNewInput}>
                     Add Cast Member
                 </Button>
-                <Button variant="secondary" onClick={handleSubmit}>
+                <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
                     Submit
                 </Button>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="btn btn-outline-secondary" onClick={handleClose}>
                     Cancel
                 </Button>
 

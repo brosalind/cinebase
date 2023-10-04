@@ -6,7 +6,7 @@ function CastList({ cast }) {
     const { show, handleClose, handleShow } = useToggle(false)
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="dark" onClick={handleShow}>
                 Show Casts
             </Button>
             <Modal show={show} onHide={handleClose}>
@@ -34,7 +34,7 @@ function CastList({ cast }) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>

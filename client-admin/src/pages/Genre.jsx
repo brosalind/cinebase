@@ -23,7 +23,7 @@ function Genre() {
     return (
         <>
         <Container className="pt-5">
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="dark" onClick={handleShow}>
                 Add Genre
             </Button>
 
@@ -40,10 +40,10 @@ function Genre() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

@@ -1,3 +1,12 @@
 .custom-table {
-    max-width: 60%; 
-  }
+  max-width: 60%;
+}
+
+.fixed-sidebar {
+  margin-left: 10px
+}
+
+.custom-table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
