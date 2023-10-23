@@ -1,4 +1,4 @@
-const { User, Movie, Cast, Genre } = require('../models')
+const { User, Movie, Cast, Genre, History } = require('../models')
 const { createToken } = require('../helpers/jwt')
 const { checkPassword } = require('../helpers/bcrypt')
 const sequelize = require('../models').sequelize;
@@ -24,7 +24,6 @@ class Controller {
             if (!user) {
                 throw { name: "UserDoesNotExist" }
             } else {
-                console.log(user)
                 const isPasswordValid = checkPassword(req.body.password, user.password)
                 if (!isPasswordValid) {
                     throw { name: 'IncorrectPassword' }
@@ -33,7 +32,7 @@ class Controller {
                         id: user.id,
                         email: user.email
                     })
-                    res.json({ access_token, email: user.email, role: user.role })
+                    res.json({ access_token, username: user.username, email: user.email, role: user.role })
                 }
             }
         }
@@ -68,7 +67,8 @@ class Controller {
             res.status(201).json({
                 access_token,
                 id: user.id,
-                email: user.email
+                email: user.email,
+                username: user.username
             })
 
         }
@@ -97,9 +97,17 @@ class Controller {
 
             const movieCast = await Cast.bulkCreate(casts, { transaction: t })
 
-            res.status(201).json({ movie, movieCast })
 
             await t.commit()
+
+            const history = await History.create({
+                title: `${movie.title}`,
+                description: `Movie: ${movie.title} was added to the database`,
+                by: req.user.username
+            })
+
+            res.status(201).json({ movie, movieCast, history })
+
 
 
         } catch (err) {
@@ -119,7 +127,7 @@ class Controller {
                 },
                 include: [{
                     model: Cast,
-                    attributes:  ['name', 'profilePict']
+                    attributes: ['name', 'profilePict']
                 },
                 {
                     model: Genre,
@@ -161,28 +169,35 @@ class Controller {
                     }
                 })
 
-                const casts = req.body.cast.pop()
 
-                for (const cast of casts){
-                    const {id, name, profilePict} = cast 
-            
-                    if(id){
-                        const existingCast = await Cast.findByPk(id)
-                        await existingCast.update({
-                            name, profilePict
-                        })
-                    } else {
-        
-                        const newCast = await Cast.create({
-                            name, profilePict, movieId: updatedMovie.id
-                        })
+                if (req.body.cast) {
+                    const casts = req.body.cast.pop()
+
+                    for (const cast of casts) {
+                        const { id, name, profilePict } = cast
+
+                        if (id) {
+                            const existingCast = await Cast.findByPk(id)
+                            await existingCast.update({
+                                name, profilePict
+                            })
+                        } else {
+                            const newCast = await Cast.create({
+                                name, profilePict, movieId: updatedMovie.id
+                            })
+                        }
                     }
                 }
 
-                res.json({ message: `${updatedMovie.title} was successfully edited.` })
+                const history = await History.create({
+                    title: `${updatedMovie.title}`,
+                    description: `Movie: ${updatedMovie.title} was successfully edited`,
+                    by: req.user.username
+                })
+                res.json({ message: `${updatedMovie.title} was successfully edited.`, history })
 
-               
             }
+
 
         }
         catch (err) {
@@ -201,6 +216,11 @@ class Controller {
             if (!movie) {
                 throw { name: "notFound" }
             } else {
+                const history = await History.create({
+                    title: `${deletedMovie.title}`,
+                    description: `Movie: ${deletedMovie.title} was successfully deleted`,
+                    by: req.user.username
+                })
                 res.json({ message: `${deletedMovie.title} was successfully deleted.` })
             }
         }
@@ -209,7 +229,7 @@ class Controller {
         }
     }
 
-     static async getGenres(req, res, next) {
+    static async getGenres(req, res, next) {
         try {
             const genre = await Genre.findAll()
             res.json(genre)
@@ -224,6 +244,15 @@ class Controller {
                 name: req.body.newGenre
             })
 
+            if (newGenre) {
+                const history = await History.create({
+                    title: `${newGenre.name}`,
+                    description: `Genre: ${newGenre.name} was added to the database`,
+                    by: req.user.username
+                })
+
+            }
+
             res.status(201).json(newGenre)
 
         }
@@ -234,6 +263,7 @@ class Controller {
 
     static async editGenre(req, res, next) {
         try {
+            console.log(req.params.id, "this is params")
             const updatedGenre = await Genre.findByPk(req.params.id)
             if (!updatedGenre) {
                 throw { name: "notFound" }
@@ -241,6 +271,12 @@ class Controller {
                 const genre = await Genre.update({
                     name: req.body.name
                 }, { where: { id: req.params.id } })
+
+                const history = await History.create({
+                    title: `${updatedGenre.name}`,
+                    description: `Genre: ${updatedGenre.name} was succcessfully edited`,
+                    by: req.user.username
+                })
 
                 res.json({
                     message: `${updatedGenre.name} was successfully updated to ${req.body.name}.`
@@ -266,6 +302,11 @@ class Controller {
             if (!genre) {
                 throw { name: "notFound" }
             } else {
+                const history = await History.create({
+                    title: `${deletedGenre.name}`,
+                    description: `Genre: ${deletedGenre.name} was succcessfully deleted`,
+                    by: req.user.username
+                })
                 res.json({
                     message: `${deletedGenre.name} was successfully deleted.`
                 })
@@ -276,7 +317,7 @@ class Controller {
         }
     }
 
-    
+
     static async getMovieDetails(req, res, next) {
         try {
             const movie = await Movie.findByPk(req.params.id, {
@@ -285,7 +326,7 @@ class Controller {
                 },
                 include: [{
                     model: Cast,
-                    attributes:  ['id', 'name', 'profilePict']
+                    attributes: ['id', 'name', 'profilePict']
                 },
                 {
                     model: Genre,
@@ -303,6 +344,18 @@ class Controller {
                 res.json(movie)
             }
         } catch (err) {
+            next(err)
+        }
+    }
+
+    static async getHistory(req, res, next) {
+        try {
+            const history = await History.findAll({
+                order: [['id', "DESC"]]
+            })
+            res.json(history)
+        }
+        catch (err) {
             next(err)
         }
     }
