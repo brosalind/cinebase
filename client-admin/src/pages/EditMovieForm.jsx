@@ -1,6 +1,6 @@
 import { Button, Container, Form } from 'react-bootstrap'
 import { thunkFetchGenres } from '../stores/genreActionCreator'
-import { thunkEditMovie, thunkGetMovieDetails } from '../stores/movieActionCreator'
+import { thunkEditMovie, thunkFetchMovies, thunkGetMovieDetails } from '../stores/movieActionCreator'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -76,7 +76,6 @@ function editMovieForm() {
         e.preventDefault()
         dispatch((thunkEditMovie(id, editMovieForm)))
         navigate('/admin/movies')
-
     }
 
     function addNewInput() {
@@ -145,7 +144,7 @@ function editMovieForm() {
                 </Form.Group>
 
                 <Form.Label>Select a Movie Genre</Form.Label>
-                <Form.Select aria-label="Default select example" value={editMovieForm.genre} onChange={handleChange} name="genreId" className="mb-3">
+                <Form.Select aria-label="Default select example" value={editMovieForm.genreId} onChange={handleChange} name="genreId" className="mb-3">
                     <option disabled value="" key="100">Open this select menu</option>
                     {
                         genres.map((el, index) => {
