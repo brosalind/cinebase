@@ -6,7 +6,7 @@ import useToggle from '../hooks/useToggle'
 import { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { thunkAddMovie } from "../stores/movieActionCreator"
+import { thunkAddMovie, thunkFetchMovies } from "../stores/movieActionCreator"
 import { thunkFetchGenres } from '../stores/genreActionCreator';
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col"
@@ -32,6 +32,7 @@ function Movie() {
     
     useEffect(() => {
         dispatch(thunkFetchGenres())
+        dispatch(thunkFetchMovies())
     }, [])
       
    

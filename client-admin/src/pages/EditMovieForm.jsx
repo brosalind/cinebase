@@ -35,7 +35,7 @@ function editMovieForm() {
                 title: selectedMovie.title || '',
                 imgUrl: selectedMovie.imgUrl || '',
                 synopsis: selectedMovie.synopsis || '',
-                trailerUrl: selectedMovie.trailer || '',
+                trailerUrl: selectedMovie.trailerUrl || '',
                 rating: selectedMovie.rating || 0,
                 genreId: selectedMovie.genreId || 0,
                 authorId: selectedMovie.authorId || 0,
@@ -74,7 +74,6 @@ function editMovieForm() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log("submit", editMovieForm)
         dispatch((thunkEditMovie(id, editMovieForm)))
         navigate('/admin/movies')
 
