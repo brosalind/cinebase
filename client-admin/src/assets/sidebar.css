@@ -16,14 +16,17 @@
     color: black
   }
 
+  .nav-link.active {
+    color: black !important; 
+  }
   .icon {
     vertical-align: middle;
     margin-top: -2px;
     font-size: 24px;
+    margin-right: 5px
   }
   
 
-  
   
   .sidebar-heading {
     font-size: 0.75rem;

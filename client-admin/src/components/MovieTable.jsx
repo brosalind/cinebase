@@ -10,6 +10,7 @@ import '../assets/movie.css';
 
 
 
+
 function MovieTable() {
     const {movies, loading} = useSelector((state) => {
         return state.movie

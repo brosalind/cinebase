@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_ERROR, REGISTER_REQUEST, REGISTER_SUCCESS } from "./adminActionTypes";
+import { LOGIN_ERROR, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_ERROR, REGISTER_REQUEST, REGISTER_SUCCESS, HISTORY_ERROR, HISTORY_REQUEST, HISTORY_SUCCESS } from "./adminActionTypes";
 
 const initialAdminState = {
     isLoggedIn: false,
@@ -6,7 +6,10 @@ const initialAdminState = {
     loading: false,
     registerSuccess: '',
     registerLoading: false,
-    registerError: ''
+    registerError: '',
+    historyError: '',
+    history: [],
+    historyLoading: false
 }
 
 function adminReducer(state = initialAdminState, action){
@@ -51,6 +54,26 @@ function adminReducer(state = initialAdminState, action){
                 registerError: action.payload
             }
         }
+        case HISTORY_SUCCESS:
+            return {
+                ...state,
+                history: action.payload,
+                historyLoading: false,
+                historyError: ''
+            };
+        case HISTORY_REQUEST: {
+            return {
+                ...state,
+                historyLoading: action.payload
+            }
+        };
+        case HISTORY_ERROR: {
+            return {
+                ...state,
+                historyError: action.payload,
+                historyLoading: false
+            }
+        };
         default:
             return state
     }

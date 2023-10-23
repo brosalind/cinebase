@@ -9,6 +9,7 @@ import {RiEdit2Line, RiDeleteBin6Line} from 'react-icons/ri'
 function MovieTableRow({movies}) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    
     function handleEdit(id){
         dispatch(thunkGetMovieDetails(id))
         navigate(`/admin/movies/${id}/edit`)

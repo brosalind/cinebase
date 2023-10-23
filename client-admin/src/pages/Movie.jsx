@@ -90,13 +90,17 @@ function Movie() {
 
     return (
         <>
-        <Container className="pt-5">
-            <Col>
-
-    
-            <Button variant="dark" onClick={handleShow}>
+       <Container className='d-flex justify-content-center' style={{ margin: '0 auto', marginBottom: '30px', marginTop: '30px'  }}>
+        <div>
+                    <h6
+                        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{ textAlign: 'center' }}>
+                        currently viewing</h6>
+                    <h3 style={{ textAlign: 'center', marginBottom: '30px' }}>Movie Database</h3>    
+                    <div className="d-flex justify-content-center mb-5">
+            <Button variant="outline-dark" onClick={handleShow} className="custom-button" style={{marginLeft: '10px'}}>
                 Add a New Movie
             </Button>
+            </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add a New Movie</Modal.Title>
@@ -139,7 +143,7 @@ function Movie() {
                         </Form.Group>
 
                         <Form.Label>Select a Movie Genre</Form.Label>
-                        <Form.Select aria-label="Default select example" value={movieForm.genre} onChange={handleChange} name="genreId">
+                        <Form.Select aria-label="Default select example" value={movieForm.genre} onChange={handleChange} name="genreId" className="mb-3">
                             <option disabled value="">Open this select menu</option>
                             {
                                 genres.map((el, index)=> {
@@ -152,7 +156,7 @@ function Movie() {
                                 return (
                                     <>
                                     <div key={index + 1}>
-                                    <Form.Group key={index}>
+                                    <Form.Group key={index} className="mb-3">
                                         
                                         <Form.Label>Cast Name</Form.Label>
                                         <Form.Control type="text" placeholder="Enter a new cast name..." name="name" value={movieForm.casts[index].name} onChange={(e) => {handleCastChange(e, index)}} />
@@ -171,13 +175,13 @@ function Movie() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="dark" onClick={addNewInput}>
+                    <Button variant="outline-dark" onClick={addNewInput}>
                         Add Cast Member
                     </Button>
-                    <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
+                    <Button variant="dark" onClick={handleSubmit}>
                         Submit
                     </Button>
-                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>
@@ -185,7 +189,7 @@ function Movie() {
 
 
             <MovieTable></MovieTable>
-            </Col>
+            </div>
             </Container>
         </>
     )

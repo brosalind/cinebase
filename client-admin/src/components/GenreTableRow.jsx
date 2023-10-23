@@ -8,13 +8,14 @@ import Form from 'react-bootstrap/Form'
 import useToggle from '../hooks/useToggle'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {RiEdit2Line, RiDeleteBin6Line} from 'react-icons/ri'
+
 
 function GenreTableRow({ genres }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     function handleEdit(id, name){
-        console.log(id, name)
         navigate(`/admin/genres/edit/${name}/${id}`)
     }
     
@@ -27,8 +28,9 @@ function GenreTableRow({ genres }) {
                     <td>
                         <Row>
                             <Col>
-                                <Button onClick={() => { dispatch(deleteGenre(el.id)) }}>Delete</Button>
-                                <Button onClick={() => { handleEdit(el.id, el.name)}}>Edit</Button>
+                                
+                                <RiEdit2Line onClick={() => { handleEdit(el.id, el.name)}} className='icon'></RiEdit2Line>
+                                <RiDeleteBin6Line onClick={() => { dispatch(deleteGenre(el.id)) }} className='icon'></RiDeleteBin6Line>
                             </Col>
                         </Row>
                     </td>

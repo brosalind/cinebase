@@ -1,5 +1,4 @@
-import { Button } from 'react-bootstrap'
-import { Form } from 'react-bootstrap'
+import { Button, Container, Form } from 'react-bootstrap'
 import { thunkFetchGenres } from '../stores/genreActionCreator'
 import { thunkEditMovie, thunkGetMovieDetails } from '../stores/movieActionCreator'
 import { useSelector, useDispatch } from 'react-redux'
@@ -104,7 +103,13 @@ function editMovieForm() {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+          <Container className='d-flex justify-content-center' style={{ margin: '0 auto' ,  marginTop: '30px'}}>
+        <div>
+        <h6
+        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{textAlign: 'center'  }}>
+        currently editing</h6>
+          <h3 style={{textAlign: 'center',  marginBottom: '40px'}}>{editMovieForm.title}</h3>
+          <Form onSubmit={handleSubmit} style={{ width: '800px', margin: '0 auto', marginBottom: '50px' }}>
                 <Form.Group className="mb-3">
                     <Form.Label>Movie Title</Form.Label>
                     <Form.Control type="text" placeholder="Enter a new movie name..." name="title" value={editMovieForm.title} onChange={handleChange} />
@@ -141,7 +146,7 @@ function editMovieForm() {
                 </Form.Group>
 
                 <Form.Label>Select a Movie Genre</Form.Label>
-                <Form.Select aria-label="Default select example" value={editMovieForm.genre} onChange={handleChange} name="genreId">
+                <Form.Select aria-label="Default select example" value={editMovieForm.genre} onChange={handleChange} name="genreId" className="mb-3">
                     <option disabled value="" key="100">Open this select menu</option>
                     {
                         genres.map((el, index) => {
@@ -154,9 +159,9 @@ function editMovieForm() {
                     editMovieForm.casts.map((el, index) => {
                         return (
                             <div key={index}>
-                                <Form.Group>
+                                <Form.Group className="mb-3">
 
-                                    <Form.Label>Cast Name</Form.Label>
+                                    <Form.Label >Cast Name</Form.Label>
                                     <Form.Control type="text" placeholder="Enter a new cast name..." name="name" value={el.name} onChange={(e) => { handleCastChange(e, index) }} />
 
                                 </Form.Group>
@@ -171,17 +176,21 @@ function editMovieForm() {
                     }
                     )}
 
-                <Button variant="dark" onClick={addNewInput}>
-                    Add Cast Member
-                </Button>
-                <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
-                    Submit
-                </Button>
-                <Button variant="btn btn-outline-secondary" onClick={handleClose}>
-                    Cancel
-                </Button>
-
+                <div className="d-flex justify-content-center">
+                    <Button variant="outline-dark" onClick={addNewInput} className='mx-2'>
+                        Add Cast Member
+                    </Button>
+                    <Button variant="dark" onClick={handleSubmit} className='mx-2'>
+                        Submit
+                    </Button>
+                    <Button variant="secondary" onClick={handleClose} className='mx-2'>
+                        Cancel
+                    </Button>
+                 
+                </div>
             </Form>
+            </div>
+            </Container>
         </>
     )
 }

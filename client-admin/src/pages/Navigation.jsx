@@ -8,7 +8,7 @@ import '../assets/movie.css'
 function Navigation(){
     return(
         <>
-          <Row style={{'--bs-gutter-x': '0'}}>
+          <Row style={{'--bs-gutter-x': '0', height: '100vh'}} >
             <Col className="col-md-2 bg-light">
             <div className="fixed-sidebar">
                 <Sidebar></Sidebar>

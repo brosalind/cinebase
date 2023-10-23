@@ -7,6 +7,7 @@ import Movie from "../pages/Movie";
 import EditGenreForm from "../pages/EditGenreForm"
 import RegisterAdmin from "../pages/Register";
 import EditMovieForm from "../pages/EditMovieForm"
+import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       return null
     },
     children: [
+      {
+        path: "dashboard",
+        element: <Dashboard></Dashboard>
+      },
       {
         path: "genres",
         element: <Genre></Genre>

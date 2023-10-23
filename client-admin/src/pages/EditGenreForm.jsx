@@ -10,41 +10,46 @@ import { useNavigate } from "react-router-dom"
 
 
 function editGenreForm() {
-
-    const { name, id } = useParams()
+    const url = useParams()
     const dispatch = useDispatch()
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const { editGenreLoading } = useSelector((state) => { return state.genre })
 
     const [editGenreForm, setEditGenreForm] = useState({
-        name: name
+        name: url.name
     })
 
     function handleSubmit(e, id) {
         e.preventDefault()
-        dispatch((editGenre(id, editGenreForm)))
+        dispatch((editGenre(url.id, editGenreForm)))
         navigate('/admin/genres')
     }
 
     function handleChange(e) {
         const { value, name } = e.target
-        console.log(value, name)
         setEditGenreForm({
             ...editGenreForm,
             [name]: value
         })
     }
+    function handleClose() {
+        navigate(`/admin/genres`)
+    }
 
-    // if(editGenreLoading){
-    //     return <h1 className="text-center">Processing your request. Please wait.</h1>
-    // }
+    if(editGenreLoading){
+        return <h1 className="text-center">Processing your request. Please wait.</h1>
+    }
 
     return (
         <>
-            <h1>Edit Genre Form</h1>
-            <Container>
-                <div className="m-auto">
-                    <Form onSubmit={(e) => { handleSubmit(e, id) }}>
+            <Container className='d-flex justify-content-center' style={{ margin: '0 auto', marginTop: '30px' }}>
+                <div>
+                    <h6
+                        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{ textAlign: 'center' }}>
+                        currently editing</h6>
+                    <h3 style={{ textAlign: 'center', marginBottom: '40px' }}>{editGenreForm.name}</h3>
+                    <Form onSubmit={(e) => { handleSubmit(e, id) }} style={{ width: '800px', margin: '0 auto', marginBottom: '50px' }}>
+
                         <div className="mb-3">
                             <div className="d-flex justify-content-between">
                                 <Form.Label>Genre Name</Form.Label>
@@ -52,10 +57,18 @@ function editGenreForm() {
                             <Form.Control type="text" className="form-control"
                                 value={editGenreForm.name} onChange={handleChange} name="name" />
                         </div>
-                        <Button className="btn btn-lg btn-primary rounded-pill w-100 p-2 mt-3" type="submit">Submit</Button>
-                    </Form>
+                        <div className="d-flex justify-content-center">
+                   
+                    <Button variant="dark" onClick={handleSubmit} className='mx-2'>
+                        Submit
+                    </Button>
+                    <Button variant="secondary" onClick={handleClose} className='mx-2'>
+                        Cancel
+                    </Button>
+                 
                 </div>
-
+                    </Form>
+                    </div>
             </Container>
         </>
     )

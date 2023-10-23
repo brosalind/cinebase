@@ -22,34 +22,43 @@ function Genre() {
     }
     return (
         <>
-        <Container className="pt-5">
-            <Button variant="dark" onClick={handleShow}>
-                Add Genre
-            </Button>
+            <Container className='d-flex justify-content-center' style={{ margin: '0 auto', marginBottom: '30px', marginTop: '30px' }}>
+                <div style={{width: '100%'}}>
+                    <h6
+                        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{ textAlign: 'center' }}>
+                        currently viewing</h6>
+                    <h3 style={{ textAlign: 'center', marginBottom: '30px' }}>Genre Database</h3>
+                    <div className="d-flex justify-content-center mb-5">
+                    <Button variant="outline-dark" onClick={handleShow}>
+                        Add Genre
+                    </Button>
+                    </div>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add a New Genre</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Genre Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter a new genre name..." name="genreName" value={genreName} onChange={handleChange} />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="btn btn-outline-dark" onClick={handleSubmit}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-            <GenreTable>
-            </GenreTable>
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Add a New Genre</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form onSubmit={handleSubmit}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Genre Name</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter a new genre name..." name="genreName" value={genreName} onChange={handleChange} />
+                                </Form.Group>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="dark" onClick={handleSubmit}>
+                                Submit
+                            </Button>
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+
+                        </Modal.Footer>
+                    </Modal>
+                    <GenreTable>
+                    </GenreTable>
+                </div>
             </Container>
         </>
     )

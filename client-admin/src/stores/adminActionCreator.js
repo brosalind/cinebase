@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_SUCCESS, LOGIN_REQUEST, REGISTER_ERROR, REGISTER_REQUEST, REGISTER_SUCCESS } from "./adminActionTypes";
+import { LOGIN_ERROR, LOGIN_SUCCESS, LOGIN_REQUEST, REGISTER_ERROR, REGISTER_REQUEST, REGISTER_SUCCESS, HISTORY_ERROR, HISTORY_REQUEST, HISTORY_SUCCESS } from "./adminActionTypes";
 let serverUrl = "http://localhost:3000/admin/"
 
 
@@ -67,6 +67,49 @@ export function registerAdmin(form){
         }).finally(() => {
             dispatch(requestRegister(false))
         })
+
+    }
+}
+
+
+export function errorHistory(payload) {
+    return { type: HISTORY_ERROR, payload }
+}
+
+export function requestHistory(payload) {
+    return { type: HISTORY_REQUEST, payload }
+}
+
+export function successHistory(payload) {
+    return { type: HISTORY_SUCCESS, payload }
+}
+
+export function fetchHistory() {
+    return (dispatch) => {
+        dispatch(requestHistory(true))
+        console.log("dispatch loading")
+        fetch(serverUrl + 'history', {
+            method: 'GET',
+            headers: {
+                "access_token": localStorage.access_token,
+                "Content-Type": "application/json"
+            }
+        })
+        .then(async (response) => {
+            if (!response.ok) {
+                throw await response.text();
+            }
+            return response.json();
+        })
+        .then((data) => {
+            dispatch(successHistory(data));
+        })
+        .catch((err) => {
+            dispatch(errorHistory(err));
+        })
+        .finally(() => {
+            dispatch(requestHistory(false));
+        });        
 
     }
 }

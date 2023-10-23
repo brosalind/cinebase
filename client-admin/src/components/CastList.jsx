@@ -34,7 +34,7 @@ function CastList({ cast }) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>

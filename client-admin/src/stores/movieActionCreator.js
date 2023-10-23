@@ -1,3 +1,4 @@
+import { fetchHistory } from "./adminActionCreator"
 import { MOVIES_FETCHED, SET_LOADING, DELETE_MOVIE_ERROR, DELETE_MOVIE_SUCCESS, DELETE_MOVIE_REQUEST, SELECTED_MOVIE_ERROR, SELECTED_MOVIE_FETCHED, SELECTED_MOVIE_LOADING } from "./movieActionTypes"
 // let serverUrl = "https://moviesdb.benitarosalind.site/"
 let serverUrl = "http://localhost:3000/"
@@ -109,6 +110,7 @@ export function thunkAddMovie(movieForm) {
             then(() => {
                 console.log("works")
                 dispatch(thunkFetchMovies())
+                dispatch(fetchHistory())
             })
             .catch((err) => {
                 console.log(err)

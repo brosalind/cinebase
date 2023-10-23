@@ -1,4 +1,4 @@
-import { Nav } from 'react-bootstrap'
+import { Nav, Image } from 'react-bootstrap'
 import { Link, NavLink, redirect } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai'
@@ -17,10 +17,13 @@ function sidebar() {
     navigate('/')
   }
   return (
-    <Nav className="flex-column pt-5 ">
+    <Nav className="flex-column pt-5 " style={{'--bs-nav-link-color': '#000000'}}>
+       <ul className="nav flex-column">
+       <Image src="../src/assets/logo.png" style={{'width': '200px', 'marginTop': '-40px'}}/>
+       </ul>
       <ul className="nav flex-column">
         <li className="nav-item">
-          <NavLink to="/admin/movies" className="nav-link fw-bold"><LuHome className="icon"></LuHome> Dashboard</NavLink>
+          <NavLink to="/admin/dashboard" className="nav-link fw-bold" ><LuHome className="icon"></LuHome> Dashboard</NavLink>
         </li>
       </ul>
       <ul className="nav flex-column">
@@ -34,7 +37,7 @@ function sidebar() {
         </li>
       </ul>
       <h6
-        class="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase">
+        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase">
         Account</h6>
       <ul className="nav flex-column">
         <li className="nav-item">

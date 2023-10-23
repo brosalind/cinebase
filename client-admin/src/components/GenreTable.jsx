@@ -1,4 +1,4 @@
-import {Table} from 'react-bootstrap'
+import {Container, Table} from 'react-bootstrap'
 import GenreTableRow from '../components/GenreTableRow'
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -20,7 +20,9 @@ function GenreTable() {
 
 
     return (
-        <Table>
+        <Container className="d-flex justify-content-center align-items-center">
+        <Table  className="table-responsive custom-table-container">
+            
             <thead>
                 <tr>
                     <th>#</th>
@@ -31,7 +33,9 @@ function GenreTable() {
             <tbody>
                 <GenreTableRow genres={genres}></GenreTableRow>
             </tbody>
+          
         </Table>
+          </Container>
 
     )
 }

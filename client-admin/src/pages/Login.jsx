@@ -40,6 +40,7 @@ function Login() {
           return response.json()
       }).then ((data) => {
           localStorage.setItem("access_token", data.access_token)
+          localStorage.setItem("name", data.username)
           dispatch(successLogin(true))
           navigate('admin/movies')  
       }).catch((err) => {

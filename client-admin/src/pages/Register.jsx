@@ -44,9 +44,12 @@ function Register() {
 
   return (
     <>
-      <Container className='d-flex justify-content-center' style={{ margin: '0 auto' }}>
+      <Container className='d-flex justify-content-center' style={{ margin: '0 auto', marginBottom: '30px', marginTop: '30px'  }}>
         <div style={{ textAlign: 'center' }}>
-          <h1 style={{ marginTop: '40px' }}>Register a New Admin</h1>
+          <h6
+            className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{ textAlign: 'center' }}>
+            currently registering</h6>
+          <h3 style={{ textAlign: 'center', marginBottom: '40px' }}>New Admin</h3>
 
           <Form onSubmit={handleSubmit} style={{ width: '800px', margin: '0 auto', alignContent: 'center' }}>
             <div className="mb-3">
@@ -73,20 +76,20 @@ function Register() {
                 placeholder="Enter your password ..." required value={registerForm.password} onChange={handleChange} />
             </div>
             <div className="mb-3">
-            <div className="d-flex justify-content-between">
-              <Form.Label>Phone Number</Form.Label>
+              <div className="d-flex justify-content-between">
+                <Form.Label>Phone Number</Form.Label>
               </div>
               <Form.Control type="number" className="form-control" id="register-phone" name="phoneNumber"
                 placeholder="Enter phone number (optional) ..." value={registerForm.phoneNumber} onChange={handleChange} />
             </div>
             <div className="mb-3">
-            <div className="d-flex justify-content-between">
-              <Form.Label>Address</Form.Label>
+              <div className="d-flex justify-content-between">
+                <Form.Label>Address</Form.Label>
               </div>
               <textarea id="register-address" className="form-control" rows="3" name="address"
                 placeholder="Enter your address (optional) ..." value={registerForm.address} onChange={handleChange}></textarea>
             </div>
-            <Button className="btn btn-lg btn-dark rounded-pill w-100 p-2 mt-3" type="submit">Sign Up</Button>
+            <Button variant="dark" type="submit">Sign Up</Button>
           </Form>
 
         </div>

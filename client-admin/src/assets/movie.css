@@ -10,3 +10,7 @@
   max-width: 100%;
   overflow-x: auto;
 }
+
+.custom-table-dashboard {
+  max-width: 80%
+}
