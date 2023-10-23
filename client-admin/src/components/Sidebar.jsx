@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai'
 import '../assets/sidebar.css'
 import { RiLogoutBoxRLine, RiAccountCircleLine } from "react-icons/ri";
-import { MdOutlineLocalMovies } from 'react-icons/md'
+import { MdOutlineLocalMovies, MdHistory } from 'react-icons/md'
 import { PiPopcornBold } from 'react-icons/pi'
 import { LuHome } from 'react-icons/lu'
 
@@ -34,6 +34,11 @@ function sidebar() {
       <ul className="nav flex-column">
         <li className="nav-item">
           <NavLink to="/admin/genres" className="nav-link fw-bold"><PiPopcornBold className="icon"></PiPopcornBold> Genres</NavLink>
+        </li>
+      </ul>
+      <ul className="nav flex-column">
+        <li className="nav-item">
+          <NavLink to="/admin/history" className="nav-link fw-bold"><MdHistory className="icon"></MdHistory> History</NavLink>
         </li>
       </ul>
       <h6

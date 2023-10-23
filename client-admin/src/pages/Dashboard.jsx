@@ -126,7 +126,6 @@ function Dashboard() {
                             ))}
                         </tbody>
                     </Table>
-                    <Button>view all past history</Button>
                 </Container>
             ) : (
                 <Container className='justify-content-center'style={{ margin: '0 auto'}} >

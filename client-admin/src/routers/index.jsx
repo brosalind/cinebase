@@ -8,6 +8,7 @@ import EditGenreForm from "../pages/EditGenreForm"
 import RegisterAdmin from "../pages/Register";
 import EditMovieForm from "../pages/EditMovieForm"
 import Dashboard from "../pages/Dashboard";
+import History from "../pages/History";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "movies",
         element: <Movie></Movie>
+      },
+      {
+        path: "history",
+        element: <History></History>
       },
       {
         path: "register",
