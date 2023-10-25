@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       Movie.belongsTo(models.Genre, {foreignKey: 'genreId'}) 
       Movie.belongsTo(models.User, {foreignKey: 'authorId'})
       Movie.hasMany(models.Cast, {foreignKey: 'movieId', onDelete: 'CASCADE', onUpdate: 'CASCADE'})
+      Movie.hasMany(models.Still, {foreignKey: 'movieId', onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     }
   }
   Movie.init({

@@ -1,6 +1,6 @@
-const { User, Movie, Cast, Genre, History } = require('../models')
+const { User, Movie, Cast, Genre, History, Still } = require('../models')
 const { createToken } = require('../helpers/jwt')
-const { checkPassword } = require('../helpers/bcrypt')
+const { checkPassword } = require('../helpers/bcrypt');
 const sequelize = require('../models').sequelize;
 
 class Controller {
@@ -98,6 +98,9 @@ class Controller {
 
             const movieCast = await Cast.bulkCreate(casts, { transaction: t })
 
+            const stills = req.body.still.map((el) => ({ ...el, movieId: movie.id }))
+
+            const movieStill = await Still.bulkCreate(stills, { transaction: t })
 
             await t.commit()
 
@@ -107,7 +110,7 @@ class Controller {
                 by: req.user.username
             })
 
-            res.status(201).json({ movie, movieCast, history })
+            res.status(201).json({ movie, movieCast, movieStill, history })
 
 
 
@@ -137,6 +140,10 @@ class Controller {
                 {
                     model: User,
                     attributes: ['username']
+                },
+                {
+                    model: Still,
+                    attributes: ['url']
                 }
                 ],
             })
@@ -189,6 +196,25 @@ class Controller {
                         }
                     }
                 }
+
+                if (req.body.stills) {
+                    const stills = req.body.stills
+                    for (const still of stills) {
+                        const { id, url } = still
+
+                        if (id) {
+                            const existingStill = await Still.findByPk(id)
+                            await existingStill.update({
+                                url
+                            })
+                        } else {
+                            const newStill = await Still.create({
+                                url, movieId: updatedMovie.id
+                            })
+                        }
+                    }
+                }
+
                 const history = await History.create({
                     title: `${updatedMovie.title}`,
                     description: `Movie: ${updatedMovie.title} was successfully edited`,
@@ -331,6 +357,10 @@ class Controller {
                 {
                     model: User,
                     attributes: ['username']
+                },
+                {
+                    model: Still,
+                    attributes: ['id', 'url']
                 }
                 ],
             })
