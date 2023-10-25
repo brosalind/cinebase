@@ -12,6 +12,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col"
 function Movie() {
     const dispatch = useDispatch()
+    const status = ['Currently Showing', 'Archive', 'Coming Soon']
     const { genres, fetchGenresLoading, fetchGenresError } = useSelector((state) => {
         return state.genre
     })
@@ -27,6 +28,7 @@ function Movie() {
         rating: 0,
         genreId: 1,
         authorId: 1,
+        status: '',
         casts: []
     })
 
@@ -142,6 +144,14 @@ function Movie() {
                                     <Form.Label>Year</Form.Label>
                                     <Form.Control type="text" placeholder="Enter a new movie year..." name="year" value={movieForm.year} onChange={handleChange} />
                                 </Form.Group>
+                                <Form.Label>Status</Form.Label>
+                                <Form.Select aria-label="Default select example" value={movieForm.status} onChange={handleChange} name="status" className="mb-3">
+                                    {
+                                        status.map((el, index) => {
+                                            return <option value={el} key={index}>{el}</option>
+                                        })
+                                    }
+                                </Form.Select>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Movie Rating</Form.Label>
                                     <Form.Control type="number" placeholder="Enter a new movie rating..." name="rating" value={movieForm.rating} onChange={handleChange} />

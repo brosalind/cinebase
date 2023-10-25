@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 function editMovieForm() {
 
     const { id } = useParams()
-
+    const status = ['Currently Showing', 'Archive', 'Coming Soon']
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { genres, fetchGenresLoading, fetchGenresError } = useSelector((state) => {
@@ -41,6 +41,7 @@ function editMovieForm() {
                 authorId: selectedMovie.authorId || 0,
                 casts: selectedMovie.Casts || [],
                 year: selectedMovie.year || 0,
+                status: selectedMovie.status || '',
                 director: selectedMovie.director || '',
                 writer: selectedMovie.writer || ''
             })
@@ -101,93 +102,101 @@ function editMovieForm() {
 
     return (
         <>
-          <Container className='d-flex justify-content-center' style={{ margin: '0 auto' ,  marginTop: '30px'}}>
-        <div>
-        <h6
-        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{textAlign: 'center'  }}>
-        currently editing</h6>
-          <h3 style={{textAlign: 'center',  marginBottom: '40px'}}>{editMovieForm.title}</h3>
-          <Form onSubmit={handleSubmit} style={{ width: '800px', margin: '0 auto', marginBottom: '50px' }}>
-                <Form.Group className="mb-3">
-                    <Form.Label>Movie Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie name..." name="title" value={editMovieForm.title} onChange={handleChange} />
+            <Container className='d-flex justify-content-center' style={{ margin: '0 auto', marginTop: '30px' }}>
+                <div>
+                    <h6
+                        className="sidebar-heading px-3 mt-4 mb-1 text-muted text-uppercase" style={{ textAlign: 'center' }}>
+                        currently editing</h6>
+                    <h3 style={{ textAlign: 'center', marginBottom: '40px' }}>{editMovieForm.title}</h3>
+                    <Form onSubmit={handleSubmit} style={{ width: '800px', margin: '0 auto', marginBottom: '50px' }}>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Movie Title</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie name..." name="title" value={editMovieForm.title} onChange={handleChange} />
 
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Movie Synopsis</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie synopsis..." name="synopsis" value={editMovieForm.synopsis} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Movie Poster</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie poster..." name="imgUrl" value={editMovieForm.imgUrl} onChange={handleChange} />
-                </Form.Group>
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Movie Synopsis</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie synopsis..." name="synopsis" value={editMovieForm.synopsis} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Movie Poster</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie poster..." name="imgUrl" value={editMovieForm.imgUrl} onChange={handleChange} />
+                        </Form.Group>
 
-                <Form.Group className="mb-3">
-                    <Form.Label>Movie Trailer</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie trailer..." name="trailerUrl" value={editMovieForm.trailerUrl} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Writer</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie writer..." name="writer" value={editMovieForm.writer} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Director</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie director..." name="director" value={editMovieForm.director} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Year</Form.Label>
-                    <Form.Control type="text" placeholder="Enter a new movie year..." name="year" value={editMovieForm.year} onChange={handleChange} />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Movie Rating</Form.Label>
-                    <Form.Control type="number" placeholder="Enter a new movie rating..." name="rating" value={editMovieForm.rating} onChange={handleChange} />
-                </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Movie Trailer</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie trailer..." name="trailerUrl" value={editMovieForm.trailerUrl} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Writer</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie writer..." name="writer" value={editMovieForm.writer} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Director</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie director..." name="director" value={editMovieForm.director} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Year</Form.Label>
+                            <Form.Control type="text" placeholder="Enter a new movie year..." name="year" value={editMovieForm.year} onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Label>Status</Form.Label>
+                        <Form.Select aria-label="Default select example" value={editMovieForm.status} onChange={handleChange} name="status" className="mb-3">
+                            {
+                                status.map((el, index) => {
+                                    return <option value={el} key={index}>{el}</option>
+                                })
+                            }
+                        </Form.Select>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Movie Rating</Form.Label>
+                            <Form.Control type="number" placeholder="Enter a new movie rating..." name="rating" value={editMovieForm.rating} onChange={handleChange} />
+                        </Form.Group>
 
-                <Form.Label>Select a Movie Genre</Form.Label>
-                <Form.Select aria-label="Default select example" value={editMovieForm.genreId} onChange={handleChange} name="genreId" className="mb-3">
-                    <option disabled value="" key="100">Open this select menu</option>
-                    {
-                        genres.map((el, index) => {
-                            return <option value={el.id} key={index}>{el.name}</option>
-                        })
-                    }
-                </Form.Select>
+                        <Form.Label>Select a Movie Genre</Form.Label>
+                        <Form.Select aria-label="Default select example" value={editMovieForm.genreId} onChange={handleChange} name="genreId" className="mb-3">
+                            <option disabled value="" key="100">Open this select menu</option>
+                            {
+                                genres.map((el, index) => {
+                                    return <option value={el.id} key={index}>{el.name}</option>
+                                })
+                            }
+                        </Form.Select>
 
-                {
-                    editMovieForm.casts.map((el, index) => {
-                        return (
-                            <div key={index}>
-                                <Form.Group className="mb-3">
+                        {
+                            editMovieForm.casts.map((el, index) => {
+                                return (
+                                    <div key={index}>
+                                        <Form.Group className="mb-3">
 
-                                    <Form.Label >Cast Name</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter a new cast name..." name="name" value={el.name} onChange={(e) => { handleCastChange(e, index) }} />
+                                            <Form.Label >Cast Name</Form.Label>
+                                            <Form.Control type="text" placeholder="Enter a new cast name..." name="name" value={el.name} onChange={(e) => { handleCastChange(e, index) }} />
 
-                                </Form.Group>
-                                <Form.Group className="mb-3 ">
-                                    <Form.Label>Cast Profile Pict</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter a new cast profile pict..." name="profilePict" value={el.profilePict} onChange={(e) => { handleCastChange(e, index) }} />
-                                </Form.Group>
-                            </div>
+                                        </Form.Group>
+                                        <Form.Group className="mb-3 ">
+                                            <Form.Label>Cast Profile Pict</Form.Label>
+                                            <Form.Control type="text" placeholder="Enter a new cast profile pict..." name="profilePict" value={el.profilePict} onChange={(e) => { handleCastChange(e, index) }} />
+                                        </Form.Group>
+                                    </div>
 
-                        )
+                                )
 
-                    }
-                    )}
+                            }
+                            )}
 
-                <div className="d-flex justify-content-center">
-                    <Button variant="outline-dark" onClick={addNewInput} className='mx-2'>
-                        Add Cast Member
-                    </Button>
-                    <Button variant="dark" onClick={handleSubmit} className='mx-2'>
-                        Submit
-                    </Button>
-                    <Button variant="secondary" onClick={handleClose} className='mx-2'>
-                        Cancel
-                    </Button>
-                 
+                        <div className="d-flex justify-content-center">
+                            <Button variant="outline-dark" onClick={addNewInput} className='mx-2'>
+                                Add Cast Member
+                            </Button>
+                            <Button variant="dark" onClick={handleSubmit} className='mx-2'>
+                                Submit
+                            </Button>
+                            <Button variant="secondary" onClick={handleClose} className='mx-2'>
+                                Cancel
+                            </Button>
+
+                        </div>
+                    </Form>
                 </div>
-            </Form>
-            </div>
             </Container>
         </>
     )

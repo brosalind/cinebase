@@ -72,9 +72,8 @@ return (
             <Button variant="outline-success">Search</Button>
         </Form>
         
-        <Container>
             <div className="table-responsive custom-table-container">
-                <Table className="table-responsive custom-table">
+                <Table className="custom-table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -83,10 +82,11 @@ return (
                             <th>Trailer</th>
                             <th>Writer</th>
                             <th>Director</th>
-                            <th>Rating</th>
+                            <th>Score</th>
                             <th>Genre</th>
                             <th>Owner</th>
                             <th>Casts</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -96,7 +96,7 @@ return (
 
                 </Table>
             </div>
-        </Container>
+    
     </>
 
 )

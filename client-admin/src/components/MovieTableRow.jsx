@@ -3,18 +3,18 @@ import CastList from './CastList'
 import { useDispatch } from 'react-redux'
 import { thunkDeleteMovie, thunkGetMovieDetails } from "../stores/movieActionCreator";
 import { useNavigate } from 'react-router-dom';
-import {RiEdit2Line, RiDeleteBin6Line} from 'react-icons/ri'
+import { RiEdit2Line, RiDeleteBin6Line } from 'react-icons/ri'
 
 
-function MovieTableRow({movies}) {
+function MovieTableRow({ movies }) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
-    function handleEdit(id){
+
+    function handleEdit(id) {
         dispatch(thunkGetMovieDetails(id))
         navigate(`/admin/movies/${id}/edit`)
     }
-  
+
     return (
         movies.map((mv, index) => {
             return (
@@ -22,18 +22,22 @@ function MovieTableRow({movies}) {
                     <td> {index + 1}</td>
                     <td><img src={mv.imgUrl} className='img-fluid' /> {mv.title} ({mv.year})</td>
                     <td>{mv.synopsis}</td>
-                    <td><iframe src={mv.trailerUrl} style={{maxWidth: '200px'}}></iframe></td>
+                    <td><iframe src={`https://www.youtube.com/embed/${mv.trailerUrl}`}
+                        style={{ maxWidth: '150px' }}></iframe></td>
                     <td>{mv.writer}</td>
                     <td>{mv.director}</td>
-                    <td>{mv.rating}</td>
+                    <td style={{textAlign: 'center'}}>{mv.rating}</td>
                     <td>{mv.Genre.name}</td>
                     <td>{mv.User.username}</td>
                     <td>
                         <CastList cast={mv.Casts}></CastList>
                     </td>
+                    <td>
+                        {mv.status}
+                    </td>
                     <td> <RiEdit2Line onClick={() => handleEdit(mv.id)} className='icon'> </RiEdit2Line>
-                     
-                    <RiDeleteBin6Line onClick={() => {dispatch(thunkDeleteMovie(mv.id))}} className='icon'>Delete</RiDeleteBin6Line></td>
+
+                        <RiDeleteBin6Line onClick={() => { dispatch(thunkDeleteMovie(mv.id)) }} className='icon'>Delete</RiDeleteBin6Line></td>
                 </tr>
             )
         })
