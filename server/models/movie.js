@@ -75,7 +75,8 @@ module.exports = (sequelize, DataTypes) => {
     authorId: DataTypes.INTEGER,
     director: DataTypes.STRING, 
     writer: DataTypes.STRING,
-    year: DataTypes.INTEGER
+    year: DataTypes.INTEGER,
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Movie',

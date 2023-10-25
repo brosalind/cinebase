@@ -90,7 +90,8 @@ class Controller {
                 authorId: req.user.id,
                 director: req.body.director,
                 writer: req.body.writer,
-                year: req.body.year
+                year: req.body.year,
+                status: req.body.status
             }, { transaction: t })
 
             const casts = req.body.cast.map((el) => ({ ...el, movieId: movie.id }))
@@ -162,13 +163,13 @@ class Controller {
                     authorId: req.user.id,
                     director: req.body.director,
                     writer: req.body.writer,
-                    year: req.body.year
+                    year: req.body.year,
+                    status: req.body.status
                 }, {
                     where: {
                         id: req.params.id
                     }
                 })
-
 
                 if (req.body.cast) {
                     const casts = req.body.cast.pop()
@@ -188,17 +189,13 @@ class Controller {
                         }
                     }
                 }
-
                 const history = await History.create({
                     title: `${updatedMovie.title}`,
                     description: `Movie: ${updatedMovie.title} was successfully edited`,
                     by: req.user.username
                 })
                 res.json({ message: `${updatedMovie.title} was successfully edited.`, history })
-
             }
-
-
         }
         catch (err) {
             next(err)
@@ -263,7 +260,6 @@ class Controller {
 
     static async editGenre(req, res, next) {
         try {
-            console.log(req.params.id, "this is params")
             const updatedGenre = await Genre.findByPk(req.params.id)
             if (!updatedGenre) {
                 throw { name: "notFound" }
