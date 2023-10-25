@@ -29,7 +29,8 @@ function Movie() {
         genreId: 1,
         authorId: 1,
         status: '',
-        casts: []
+        casts: [],
+        stills: []
     })
 
 
@@ -59,8 +60,22 @@ function Movie() {
                 cast
             ]
         })
+    } 
 
-    }
+    function handleStillCbange(e, index){
+        const {name, value} = e.target
+        const still = [...movieForm.stills];
+        still[index][name] = value
+        setMovieForm({
+            ...movieForm,
+            still: [
+                ...movieForm.stills,
+                still
+            ]
+        })
+        }
+
+    
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -76,6 +91,18 @@ function Movie() {
                 {
                     name: '',
                     profilePict: ''
+                }
+            ]
+        })
+    }
+
+    function addNewMedia() {
+        setMovieForm({
+            ...movieForm,
+            stills: [
+                ...movieForm.stills,
+                {
+                    url: ''
                 }
             ]
         })
@@ -186,12 +213,33 @@ function Movie() {
                                         )
                                     }
                                     )}
+                                    
+                                    {
+                                    movieForm.stills.map((el, index) => {
+                                        return (
+                                            <>
+                                                <div key={index + 1}>
+                                                    <Form.Group key={`still-url-${index}`} className="mb-3">
+
+                                                        <Form.Label>Still {index+1} Url</Form.Label>
+                                                        <Form.Control type="text" placeholder="Enter a new still..." name="url" value={movieForm.stills[index].url} onChange={(e) => { handleStillCbange(e, index) }} />
+
+                                                    </Form.Group>
+                            
+                                                </div>
+                                            </>
+                                        )
+                                    }
+                                    )}
 
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="outline-dark" onClick={addNewInput}>
                                 Add Cast Member
+                            </Button>
+                            <Button variant="outline-dark" onClick={addNewMedia}>
+                                Add Movie Still
                             </Button>
                             <Button variant="dark" onClick={handleSubmit}>
                                 Submit

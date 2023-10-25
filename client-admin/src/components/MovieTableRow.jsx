@@ -23,7 +23,19 @@ function MovieTableRow({ movies }) {
                     <td><img src={mv.imgUrl} className='img-fluid' /> {mv.title} ({mv.year})</td>
                     <td>{mv.synopsis}</td>
                     <td><iframe src={`https://www.youtube.com/embed/${mv.trailerUrl}`}
-                        style={{ maxWidth: '150px' }}></iframe></td>
+                        style={{ maxWidth: '150px' }}></iframe>
+                      {
+                        mv.Stills.map((el) => {
+                            return (
+                                <>
+                                <img src={el.url} width="150px" style={{marginBottom: '10px'}}></img>
+                                </>
+
+                            )
+                           
+                        })
+                      }
+                        </td>
                     <td>{mv.writer}</td>
                     <td>{mv.director}</td>
                     <td style={{textAlign: 'center'}}>{mv.rating}</td>

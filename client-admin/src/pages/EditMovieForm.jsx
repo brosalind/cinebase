@@ -43,7 +43,8 @@ function editMovieForm() {
                 year: selectedMovie.year || 0,
                 status: selectedMovie.status || '',
                 director: selectedMovie.director || '',
-                writer: selectedMovie.writer || ''
+                writer: selectedMovie.writer || '',
+                stills: selectedMovie.Stills || []
             })
             setEditMovieFormLoading(false)
         }
@@ -70,7 +71,19 @@ function editMovieForm() {
                 cast
             ]
         })
+    }
 
+    function handleStillChange(e, index) {
+        const { name, value } = e.target
+        const still = [...editMovieForm.stills];
+        still[index][name] = value
+        setEditMovieForm({
+            ...editMovieForm,
+            still: [
+                ...editMovieForm.stills,
+                still
+            ]
+        })
     }
 
     function handleSubmit(e) {
@@ -87,6 +100,18 @@ function editMovieForm() {
                 {
                     name: '',
                     profilePict: ''
+                }
+            ]
+        })
+    }
+
+    function addNewStill() {
+        setEditMovieForm({
+            ...editMovieForm,
+            stills: [
+                ...editMovieForm.stills,
+                {
+                    url: ''
                 }
             ]
         })
@@ -183,9 +208,30 @@ function editMovieForm() {
                             }
                             )}
 
+{
+                            editMovieForm.stills.map((el, index) => {
+                                return (
+                                    <div key={index}>
+                                        <Form.Group className="mb-3">
+
+                                            <Form.Label >Still {index+1}</Form.Label>
+                                            <Form.Control type="text" placeholder="Enter a new movie still..." name="url" value={el.url} onChange={(e) => { handleStillChange(e, index) }} />
+
+                                        </Form.Group>
+                                    
+                                    </div>
+
+                                )
+
+                            }
+                            )}
+
                         <div className="d-flex justify-content-center">
                             <Button variant="outline-dark" onClick={addNewInput} className='mx-2'>
                                 Add Cast Member
+                            </Button>
+                            <Button variant="outline-dark" onClick={addNewStill} className='mx-2'>
+                                Add Movie Still
                             </Button>
                             <Button variant="dark" onClick={handleSubmit} className='mx-2'>
                                 Submit

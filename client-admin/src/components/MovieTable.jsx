@@ -28,50 +28,50 @@ function MovieTable() {
     const [filteredMovies, setFilteredMovies] = useState([])
 
     useEffect(() => {
-        if(movies){
+        if (movies) {
             const filtered = movies.filter((movie) => {
                 const searchTerm = search.toLowerCase();
                 return (
-                      movie.title.toLowerCase().includes(searchTerm) ||
-                      movie.writer.toLowerCase().includes(searchTerm) ||
-                      movie.director.toLowerCase().includes(searchTerm) ||
-                      movie.Casts.some((cast) => cast.name.toLowerCase().includes(searchTerm))||
-                      movie.Genre.name.toLowerCase().includes(searchTerm)) 
-        });
-        setFilteredMovies(filtered);
+                    movie.title.toLowerCase().includes(searchTerm) ||
+                    movie.writer.toLowerCase().includes(searchTerm) ||
+                    movie.director.toLowerCase().includes(searchTerm) ||
+                    movie.Casts.some((cast) => cast.name.toLowerCase().includes(searchTerm)) ||
+                    movie.Genre.name.toLowerCase().includes(searchTerm))
+            });
+            setFilteredMovies(filtered);
 
         }
-       
-}, [search, movies]);
+
+    }, [search, movies]);
 
 
 
-if (loading) {
-    return <>
-        <Container className="pt-5">
-            <Col>
-                <h1 className="text-center">Loading... Please wait.</h1>
-            </Col>
-        </Container>
-    </>
-}
+    if (loading) {
+        return <>
+            <Container className="pt-5">
+                <Col>
+                    <h1 className="text-center">Loading... Please wait.</h1>
+                </Col>
+            </Container>
+        </>
+    }
 
 
-return (
-    <>
+    return (
+        <>
 
-        <Form className="d-flex mb-5">
-            <Form.Control
-                type="search"
-                placeholder="Search by title, writer, director, cast, genre..."
-                className="me-2"
-                aria-label="Search"
-                value={search}
-                onChange={handleSearchChange}
-            />
-            <Button variant="outline-success">Search</Button>
-        </Form>
-        
+            <Form className="d-flex mb-5">
+                <Form.Control
+                    type="search"
+                    placeholder="Search by title, writer, director, cast, genre..."
+                    className="me-2"
+                    aria-label="Search"
+                    value={search}
+                    onChange={handleSearchChange}
+                />
+                <Button variant="outline-success">Search</Button>
+            </Form>
+
             <div className="table-responsive custom-table-container">
                 <Table className="custom-table">
                     <thead>
@@ -79,7 +79,7 @@ return (
                             <th>#</th>
                             <th>Title</th>
                             <th>Synopsis</th>
-                            <th>Trailer</th>
+                            <th>Media</th>
                             <th>Writer</th>
                             <th>Director</th>
                             <th>Score</th>
@@ -96,10 +96,10 @@ return (
 
                 </Table>
             </div>
-    
-    </>
 
-)
+        </>
+
+    )
 }
 
 

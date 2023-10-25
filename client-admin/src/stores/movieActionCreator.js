@@ -98,7 +98,9 @@ export function thunkAddMovie(movieForm) {
                     cast: movieForm.casts,
                     year: movieForm.year,
                     writer: movieForm.writer,
-                    director: movieForm.director
+                    director: movieForm.director,
+                    status: movieForm.status,
+                    still: movieForm.stills
                 })
         })
             .then(async (response) => {
@@ -160,7 +162,6 @@ export function selectedMovieError(payload) {
 
     export function thunkEditMovie(id, editMovieForm) {
         return (dispatch) => {
-            console.log(editMovieForm)
             fetch(serverUrl + 'admin/movies/' + `${id}`, {
                 method: "PUT",
                 headers: {
