@@ -1,44 +1,55 @@
-import { useState } from "react"
+import React, { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel';
-import '../assets/carousel.css'
+import '../assets/carousel.css';
 import { Link } from "react-router-dom";
 
 function Banner({ picture }) {
-    const [index, setIndex] = useState(0);
+  const [currentMovies, setCurrentMovies] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-    const handleSelect = (selectedIndex) => {
-        setIndex(selectedIndex);
-    };
+  useEffect(() => {
+    if (picture) {
+      const current = picture.movies.filter((movie) => {
+        return (
+          movie.status.toLowerCase().includes('currently showing')
+        );
+      });
+      setCurrentMovies(current);
+    }
+  }, [picture]);
 
-    return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-            {
-                picture.movies.map((pic) => {
-                    return (
-                        <Carousel.Item key={pic.id}>
-                            <div>
-                                <div>
-                                    <img
-                                        className="d-block w-100 carousel-img"
-                                        src={pic.imgUrl}
-                                        alt={pic.title}
-                                    />
-                                </div>
-                            </div>
-                            <Carousel.Caption key={pic.id}>
-                                <span className="carousel-text-h1"> {pic.title} </span>
-                                <br/>
-                                <Link to ={`/movies/${pic.id}`}><span className="carousel-text">Read More</span></Link>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                    )
-                })
-            }
+  return (
+    <>
+      <Carousel activeIndex={activeIndex} prevIcon={null} nextIcon={null}>
+        {currentMovies.map((pic) => (
+          <Carousel.Item key={pic.id}>
+            <div>
+              <Link to={`/movies/${pic.id}`}>
+                <img
+                  className="d-block w-100 carousel-img"
+                  src={pic.Stills[0].url}
+                  alt={pic.title}
+                />
+              </Link>
+            </div>
 
-            </Carousel>
-    )
+          </Carousel.Item>
+          
+        ))}
+      </Carousel>
+      <div className="movie-titles">
+        {currentMovies.map((pic, index) => (
+          <p
+            key={pic.id}
+            className={`movie-title ${index === activeIndex ? 'active' : ''}`}
+            onClick={() => setActiveIndex(index)}
+          >
+            {pic.title} ({pic.year})
+          </p>
+        ))}
+      </div>
+      </>
+  );
 }
 
-
-
-export default Banner
+export default Banner;

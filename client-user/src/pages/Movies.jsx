@@ -29,6 +29,8 @@ function Movies() {
     return (
         <>
         <Container>
+            <h1>Upcoming</h1>
+            <Cards movieData={movies}></Cards>
             <h1 className="text-center"> All Films</h1>
             <Cards movieData={movies}></Cards>
 

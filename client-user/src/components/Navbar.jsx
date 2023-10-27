@@ -2,25 +2,24 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
-            <nav className="navbar navbar-expand-lg" style={{backgroundColor: "white"}}>
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">A24</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                            <Link className="nav-link active"  to="/">Home </Link>
-                            </li>
-                            <li className="nav-item">
-                            <Link className="nav-link active"  to="/movies">Movies </Link>
-                            </li>
-                        </ul>
+        <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "white" }}>
+            <div className="container">
+                <div className="row align-items-center w-100">
+                    <div className="col-4 text-end">
+                        <Link className="nav-link active" to="/">Home</Link>
+                    </div>
+                    <div className="col-4 text-center">
+                        <Link className="navbar-brand" to="/">
+                            <img src="../src/assets/logo.png" style={{ width: '200px' }} alt="Logo" />
+                        </Link>
+                    </div>
+                    <div className="col-4 text-start">
+                        <Link className="nav-link active" to="/movies">Movies</Link>
                     </div>
                 </div>
-            </nav>
-    )
+            </div>
+        </nav>
+    );
 }
 
-export default Navbar 
+export default Navbar;

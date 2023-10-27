@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function Layout(){
     return (
         <>
-        <Navbar></Navbar>
+        {/* <Navbar></Navbar> */}
         <Outlet></Outlet>
         </>
     )

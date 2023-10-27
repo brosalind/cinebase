@@ -12,6 +12,21 @@
     height: 100%;
     object-fit: cover;
 }
+.stills-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 80%;
+}
+
+.stills-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+    object-fit: cover;
+
+}
 
 .text-container {
     display: flex;
@@ -21,10 +36,17 @@
     width: 800px;
 }
 
+.picture-container {
+    display: flex;
+
+    justify-content: center;
+    width: 800px;
+}
+
 .caption {
     text-transform: uppercase;
     font-size: 13px;
-    letter-spacing: 2px;
+    letter-spacing: px;
     color: grey
 }
 
@@ -33,4 +55,14 @@ h3 {
     text-align: justify;
     letter-spacing: 1px;
 
+}
+
+hr {
+    max-width: 95%;
+    margin: 0 auto
+}
+
+.custom-button {
+    margin-top: 30px;
+    border-radius: 0
 }

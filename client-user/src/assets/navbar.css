@@ -1,0 +1,9 @@
+.visible {
+    display: block;
+    /* or any other styles for a visible navbar */
+}
+
+.hidden {
+    display: none;
+    /* or any other styles for a hidden navbar */
+}

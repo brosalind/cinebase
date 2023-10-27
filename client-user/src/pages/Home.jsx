@@ -6,23 +6,29 @@ import { useSelector, useDispatch } from "react-redux"
 import { fetchMovies } from "../../stores/actionCreator"
 
 function Home() {
-    const {movies, loading, error} = useSelector((state) => { return state })
+    const { movies, loading, error } = useSelector((state) => { return state })
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         dispatch(fetchMovies())
     }, [])
 
-    if(loading){
+
+    if (loading) {
         return <h1 className='text-center'>Loading data... Please wait...</h1>
     }
     return (
         <>
-            <Banner picture={{movies}}></Banner>
-            <Container className="pt-5">
-            <Cards movieData={movies}></Cards>
+            <div className="vh-100 slideshow-container">
+                <Banner picture={{ movies }}></Banner>
 
-        </Container>
+            </div>
+
+            <Container className="pt-5">
+                <Cards movieData={movies}></Cards>
+
+            </Container>
         </>
     )
 }
