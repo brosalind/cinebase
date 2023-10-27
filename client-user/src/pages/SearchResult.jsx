@@ -18,8 +18,13 @@ function SearchResults() {
 
         if (movies) {
             const filtered = movies.filter((movie) =>
-                movie.title.toLowerCase().includes(query.toLowerCase())
-            );
+            movie.title.toLowerCase().includes(query.toLowerCase()) ||
+            movie.title.toLowerCase().includes(query.toLowerCase()) ||
+            movie.writer.toLowerCase().includes(query.toLowerCase()) ||
+            movie.director.toLowerCase().includes(query.toLowerCase()) ||
+            movie.Casts.some((cast) => cast.name.toLowerCase().includes(query.toLowerCase())) ||
+            movie.Genre.name.toLowerCase().includes(query.toLowerCase())
+          );
             setSearched(filtered)
         }
     }, [movies, query]);
