@@ -16,7 +16,7 @@ function Home() {
 
 
     if (loading) {
-        return <h1 className='text-center'>Loading data... Please wait...</h1>
+        return  <div style={{backgroundColor: "black"}}></div>
     }
     return (
         <>

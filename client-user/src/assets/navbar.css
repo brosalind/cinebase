@@ -1,9 +1,24 @@
-.visible {
-    display: block;
-    /* or any other styles for a visible navbar */
+/* .visible {
+    display: block
 }
 
 .hidden {
     display: none;
-    /* or any other styles for a hidden navbar */
+} */
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+.placeholder-white::placeholder {
+    color: white;
+}
+
+.placeholder-black::placeholder {
+    color: black;
 }

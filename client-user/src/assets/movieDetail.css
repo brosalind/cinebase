@@ -54,7 +54,10 @@ h3 {
     font-weight: normal;
     text-align: justify;
     letter-spacing: 1px;
+}
 
+H4 {
+    font-weight: 500;
 }
 
 hr {
@@ -66,3 +69,4 @@ hr {
     margin-top: 30px;
     border-radius: 0
 }
+

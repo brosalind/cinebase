@@ -18,7 +18,7 @@ function MovieDetail() {
 
 
     if (selectedMovieLoading) {
-        return <h1 className="text-center">Loading data.. Please wait.</h1>
+        return <div style={{backgroundColor: "black"}}></div>
     } else {
         if (!selectedMovieError) {
             return <>
@@ -27,7 +27,7 @@ function MovieDetail() {
             </>
         }
         else if (!selectedMovie.Genre || !selectedMovie.User || !selectedMovie.Casts) {
-            return <h1 className="text-center">Loading data.. Please wait.</h1>
+            return <div style={{backgroundColor: "black"}}></div>
         }
     }
 
@@ -37,7 +37,7 @@ function MovieDetail() {
         <>
 
             <Container style={{ maxWidth: '100vw', margin: '0', padding: '0' }}>
-                <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${selectedMovie.trailerUrl}?autoplay=1&controls=0&rel=0`} alt={selectedMovie.trailerUrl} style={{
+                <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${selectedMovie.trailerUrl}?autoplay=1&controls=0&rel=0&showinfo=0&modestBranding=1`} alt={selectedMovie.trailerUrl} style={{
                     width: "100%",
                     height: "720px"
                 }} allowFullScreen  ></iframe>

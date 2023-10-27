@@ -27,9 +27,10 @@
 
 .movie-title {
     cursor: pointer;
-    font-weight: bold;
+    font-weight: normal;
     margin: 0 10px;
-    font-size: 50px
+    font-size: 50px;
+    letter-spacing: 1px;
 }
 
 .movie-title.active {

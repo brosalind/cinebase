@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Cards from "../components/Cards"
 import Container from "react-bootstrap/Container"
 import { useSelector, useDispatch } from "react-redux"
@@ -8,12 +8,36 @@ function Movies() {
     const {movies, loading, error} = useSelector((state) => { return state })
     const dispatch = useDispatch()
 
+    const [upcomingMovies, setUpcomingMovies] = useState([])
+    const [allMovies, setAllMovies] = useState([])
+
+    useEffect(() => {
+        if (movies) {
+            const filtered = movies.filter((movie) => {
+                return (
+                    movie.status.toLowerCase().includes('coming soon'))})
+            setUpcomingMovies(filtered);
+        }
+    }, [movies]);
+
+    useEffect(() => {
+        if (movies) {
+            const filtered = movies.filter((movie) => {
+                return (
+                    movie.status.toLowerCase().includes('archive') ||
+                movie.status.toLowerCase().includes('currently showing')) })
+            setAllMovies(filtered);
+        }
+    }, [movies]);
+
     useEffect(() => {
         dispatch(fetchMovies())
     }, [])
 
     if (loading){
-        return <h1 className="text-center">Loading data.. Please wait.</h1>
+        return <>
+        <div style={{backgroundColor: "black"}}></div>
+        </>
     } else {
         if(!error){
             return <>
@@ -28,11 +52,11 @@ function Movies() {
 
     return (
         <>
-        <Container>
-            <h1>Upcoming</h1>
-            <Cards movieData={movies}></Cards>
-            <h1 className="text-center"> All Films</h1>
-            <Cards movieData={movies}></Cards>
+        <Container style={{marginTop: '150px'}}>
+            <h2>Upcoming</h2>
+            <Cards movieData={upcomingMovies}></Cards>
+            <h2 style={{ marginTop: '50px'}}>All Films</h2>
+            <Cards movieData={allMovies}></Cards>
 
         </Container>
         </>
