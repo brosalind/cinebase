@@ -11,7 +11,10 @@ function Layout(){
         <div className="outlet-container">
           <Outlet />
         </div>
-        <Footer></Footer>
+        <div>
+        <Footer/>
+        </div>
+        
       </>
     )
 }

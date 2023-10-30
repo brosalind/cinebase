@@ -1,0 +1,20 @@
+.even {
+    flex-direction: row-reverse;
+  }
+  
+  .odd {
+    flex-direction: row;
+  }
+  
+  .image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .synopsis-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

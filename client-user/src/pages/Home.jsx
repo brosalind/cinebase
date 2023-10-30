@@ -4,6 +4,7 @@ import Cards from "../components/Cards"
 import Container from 'react-bootstrap/Container'
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMovies } from "../../stores/actionCreator"
+import MovieRow from '../components/Row'
 
 function Home() {
     const { movies, loading, error } = useSelector((state) => { return state })
@@ -16,7 +17,7 @@ function Home() {
 
 
     if (loading) {
-        return  <div style={{backgroundColor: "black"}}></div>
+        return <div style={{ backgroundColor: "black" }}></div>
     }
     return (
         <>
@@ -25,10 +26,11 @@ function Home() {
 
             </div>
 
-            <Container className="pt-5">
-                <Cards movieData={movies}></Cards>
 
-            </Container>
+            <MovieRow movies={movies}>
+
+            </MovieRow>
+           
         </>
     )
 }

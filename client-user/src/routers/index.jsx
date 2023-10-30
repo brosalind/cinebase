@@ -5,6 +5,7 @@ import Home from "../pages/Home"
 import Movies from "../pages/Movies"
 import MovieDetail from "../pages/MovieDetail"
 import SearchResults from "../pages/SearchResult";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchResults></SearchResults>
+      },
+      {
+        path: "about",
+        element: <About></About>
       }
     ]
 

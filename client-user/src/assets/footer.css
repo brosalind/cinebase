@@ -1,0 +1,11 @@
+
+.sticky-footer {
+    min-height: calc(100vh - 5000px); /* Adjust the value as needed */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-content {
+    flex: 1;
+  }
+  

@@ -1,9 +1,10 @@
 import { Container, Row, Col } from "react-bootstrap";
+import "../assets/footer.css"
 
 function Footer() {
 
     return (
-        <footer className="bg-black text-white">
+        <footer className="bg-black text-white" >
             <Container style={{ paddingTop: '80px', paddingBottom: '50px' }}>
                 <Row className="align-items-center">
                     <Col md={2}>

@@ -23,10 +23,10 @@ function Navbar() {
         };
     }, []);
 
-    const pageColor = location.pathname === "/movies" || location.pathname === '/search' ? "black" : "white";
+    const pageColor = location.pathname === "/movies" || location.pathname === '/search' || location.pathname =='/about' ? "black" : "white";
 
     const getLogo = () => {
-        if (location.pathname === "/movies" || location.pathname==="/search") {
+        if (location.pathname === "/movies" || location.pathname==="/search" ||  location.pathname =='/about') {
             return "/src/assets/logo.png";
         } else {
             return "/src/assets/logo-white.png";
@@ -76,7 +76,7 @@ function Navbar() {
                 <Form.Control
                     type="text"
                     placeholder="Search"
-                    className={`mr-sm-2 search-box ${location.pathname === "/movies"  ? "placeholder-black" : "placeholder-white"}`}
+                    className={`mr-sm-2 search-box ${location.pathname === "/movies" ||  location.pathname === '/search' || location.pathname =='/about' ? "placeholder-black" : "placeholder-white"}`}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyUp={handleSearch}
