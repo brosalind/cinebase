@@ -153,6 +153,7 @@ class Controller {
         }
     }
 
+
     static async editMovie(req, res, next) {
         try {
 
