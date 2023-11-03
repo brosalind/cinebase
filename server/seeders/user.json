@@ -1,0 +1,18 @@
+[{
+    "id": 1,
+    "username": "admin",
+    "email": "admin@mail.com",
+    "password": 123456,
+    "role": "admin",
+    "phoneNumber": "+15647685034",
+    "address": "Clifton Park"
+}, {
+    "id": 2,
+    "username": "Kelly",
+    "email": "kelly@mail.com",
+    "password": 123456,
+    "role": "admin",
+    "phoneNumber": "+15647586740",
+    "address": "Clifton Park"
+
+}]
