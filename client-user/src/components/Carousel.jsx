@@ -11,9 +11,9 @@ function Banner({ picture }) {
     if (picture) {
       const current = picture.movies.filter((movie) => {
         return (
-          movie.status.toLowerCase().includes('currently showing')
+          movie.status.toLowerCase().includes('currently showing') && movie.Stills.length > 0
         );
-      });
+      }).slice(0,5);
       setCurrentMovies(current);
     }
   }, [picture]);

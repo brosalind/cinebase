@@ -7,7 +7,19 @@ import { useNavigate } from 'react-router-dom';
 
 
 function MovieRow({ movies }) {
-    const filteredMovies = movies.filter(movie => movie.Stills && movie.Stills.length > 1).slice(0, 4)
+
+    const current = movies.filter((movie) => {
+        return (
+          movie.status.toLowerCase().includes('currently showing') && movie.Stills.length > 0
+        );
+      }).slice(0, 5);
+      
+      const filteredMovies = movies.filter((movie) => {
+        return (
+        movie.Stills.length > 1
+        );
+      }).filter((movie) => !current.some((curMovie) => curMovie.title === movie.title)).slice(0, 4);
+      
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
