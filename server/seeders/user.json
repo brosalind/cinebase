@@ -1,8 +1,8 @@
 [{
     "id": 1,
-    "username": "admin",
-    "email": "admin@mail.com",
-    "password": 123456,
+    "username": "clifton",
+    "email": "clifton@mail.com",
+    "password": "$2a$10$/i0poWG.Gw/hc.40KeXrUeoAL/Elo4vZ3uxQpts4cEcXDZONoE8HG",
     "role": "admin",
     "phoneNumber": "+15647685034",
     "address": "Clifton Park"
@@ -10,7 +10,7 @@
     "id": 2,
     "username": "Kelly",
     "email": "kelly@mail.com",
-    "password": 123456,
+    "password": "$2a$10$/i0poWG.Gw/hc.40KeXrUeoAL/Elo4vZ3uxQpts4cEcXDZONoE8HG",
     "role": "admin",
     "phoneNumber": "+15647586740",
     "address": "Clifton Park"

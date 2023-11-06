@@ -30,18 +30,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    slug: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate:{
-        notEmpty: {
-          msg: 'Slug is required.'
-        },
-        notNull :{
-          msg: 'Slug is required.'
-        }
-      }
-    },
     synopsis: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -82,10 +70,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Movie',
   });
-  Movie.beforeValidate((movie) => {
-    movie.slug = movie.title.toLowerCase().trim().replace(/[^\w\s-]/g, "")
-		.replace(/[\s_-]+/g, "-")
-		.replace(/^-+|-+$/g, "");
-  })
+
   return Movie;
 };
