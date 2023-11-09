@@ -39,7 +39,13 @@ function Register() {
   }
 
   if (registerSuccess) {
-    return <h1 className='text-center'>Success!</h1>
+
+    return <Container className="d-flex flex-column flex-wrap justify-content-center my-auto mx-auto h-100">
+    
+      <h3 className='text-center my-auto'>success registering a new admin!</h3>
+    
+      
+      </Container>
   }
 
   return (

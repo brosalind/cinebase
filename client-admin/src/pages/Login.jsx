@@ -42,7 +42,7 @@ function Login() {
           localStorage.setItem("access_token", data.access_token)
           localStorage.setItem("name", data.username)
           dispatch(successLogin(true))
-          navigate('admin/movies')  
+          navigate('admin/dashboard')  
       }).catch((err) => {
           console.log(err,"this is error")
           dispatch(errorLogin(err))
